@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { Shield } from "lucide-react";
 
-const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/110291972/eUbA5NSXSrUDToa4RxQdTu/DigitalGuardianslogo_d3ab57ff.png";
+const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/110291972/eUbA5NSXSrUDToa4RxQdTu/DigitalGuardianslogo(2)_4ab11ef1.png";
 
 export default function Footer() {
   return (
@@ -38,10 +38,11 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               {[
-                { label: "Check for Scams", href: "/#analyzer" },
+                { label: "AI Assistant", href: "/#analyzer" },
                 { label: "Learn & Practice", href: "/#learn" },
                 { label: "Resources", href: "/resources" },
                 { label: "About Us", href: "/#about" },
+                { label: "Contact Us", href: "/contact" },
               ].map((link) => (
                 <li key={link.href}>
                   {link.href.startsWith("/#") ? (

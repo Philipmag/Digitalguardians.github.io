@@ -9,8 +9,9 @@ import ArticleLayout, {
   ArticleTip,
   ArticleCard,
   ArticleStepList,
-  ArticleQuiz,
 } from "@/components/ArticleLayout";
+import { QuizProvider } from "@/contexts/QuizContext";
+import { InteractiveQuiz, QuizScoreboard } from "@/components/InteractiveQuiz";
 
 const tableOfContents = [
   { id: "understanding-email", label: "Understanding Email" },
@@ -153,9 +154,9 @@ export default function EmailBasics() {
                 "Show the email to a family member, friend, or caregiver who can help you determine if it's real. There's no shame in asking for a second opinion.",
             },
             {
-              title: "Use our Scam Analyzer",
+              title: "Use our AI Assistant",
               description:
-                "Copy and paste the email text into our AI Scam Analyzer on the homepage. It will analyze the message and tell you if it looks suspicious.",
+                "Copy and paste the email text into our AI Assistant on the homepage. It will analyze the message and tell you if it looks suspicious.",
             },
           ]}
         />
@@ -167,32 +168,38 @@ export default function EmailBasics() {
 
       <ArticleSection id="quiz" title="Test Your Knowledge">
         <ArticleParagraph>
-          Let's see how much you've learned. Try these quick questions:
+          Let's see how much you've learned! Select your answer for each question, then click "Submit Answer" to check if you're right. Your score will be tracked below.
         </ArticleParagraph>
 
-        <ArticleQuiz
-          question="You receive an email from 'support@amaz0n-security.com' asking you to verify your account. What should you do?"
-          options={[
-            "Click the link and enter your password",
-            "Reply with your account details",
-            "Delete the email and go to Amazon.com directly",
-            "Forward it to your friends",
-          ]}
-          correctIndex={2}
-          explanation="The email address contains a zero instead of an 'o' and has extra words — classic signs of a phishing email. Always go directly to the real website instead of clicking links in suspicious emails."
-        />
+        <QuizProvider totalExpected={2}>
+          <InteractiveQuiz
+            questionId="email-q1"
+            question="You receive an email from 'support@amaz0n-security.com' asking you to verify your account. What should you do?"
+            options={[
+              "Click the link and enter your password",
+              "Reply with your account details",
+              "Delete the email and go to Amazon.com directly",
+              "Forward it to your friends",
+            ]}
+            correctIndex={2}
+            explanation="The email address contains a zero instead of an 'o' and has extra words — classic signs of a phishing email. Always go directly to the real website instead of clicking links in suspicious emails."
+          />
 
-        <ArticleQuiz
-          question="Which of these is a red flag in an email?"
-          options={[
-            "The email addresses you by your full name",
-            "The email says 'Dear Valued Customer'",
-            "The email comes from a company you regularly use",
-            "The email has a professional-looking logo",
-          ]}
-          correctIndex={1}
-          explanation="Generic greetings like 'Dear Valued Customer' are a common sign of phishing. Legitimate companies that have your account will usually address you by name."
-        />
+          <InteractiveQuiz
+            questionId="email-q2"
+            question="Which of these is a red flag in an email?"
+            options={[
+              "The email addresses you by your full name",
+              "The email says 'Dear Valued Customer'",
+              "The email comes from a company you regularly use",
+              "The email has a professional-looking logo",
+            ]}
+            correctIndex={1}
+            explanation="Generic greetings like 'Dear Valued Customer' are a common sign of phishing. Legitimate companies that have your account will usually address you by name."
+          />
+
+          <QuizScoreboard />
+        </QuizProvider>
       </ArticleSection>
     </ArticleLayout>
   );

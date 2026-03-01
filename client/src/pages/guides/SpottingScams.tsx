@@ -20,8 +20,9 @@ import ArticleLayout, {
   ArticleTip,
   ArticleCard,
   ArticleStepList,
-  ArticleQuiz,
 } from "@/components/ArticleLayout";
+import { QuizProvider } from "@/contexts/QuizContext";
+import { InteractiveQuiz, QuizScoreboard } from "@/components/InteractiveQuiz";
 
 const tableOfContents = [
   { id: "why-seniors-targeted", label: "Why Seniors Are Targeted" },
@@ -208,44 +209,51 @@ export default function SpottingScams() {
 
       <ArticleSection id="quiz" title="Test Your Knowledge">
         <ArticleParagraph>
-          Let's see how well you can spot the scams:
+          Let's see how well you can spot the scams! Select your answer and click "Submit Answer" to check.
         </ArticleParagraph>
 
-        <ArticleQuiz
-          question="You receive a call from someone claiming to be your grandchild who needs bail money. What's the best first step?"
-          options={[
-            "Send the money immediately — they sound upset",
-            "Ask them to prove they're your grandchild by answering a personal question",
-            "Hang up and call your grandchild directly on their known phone number",
-            "Give them your credit card number over the phone",
-          ]}
-          correctIndex={2}
-          explanation="Always verify independently. Hang up and call your grandchild (or their parents) on a number you already have. Scammers can be very convincing, but they can't answer your grandchild's real phone."
-        />
+        <QuizProvider totalExpected={3}>
+          <InteractiveQuiz
+            questionId="scam-q1"
+            question="You receive a call from someone claiming to be your grandchild who needs bail money. What's the best first step?"
+            options={[
+              "Send the money immediately — they sound upset",
+              "Ask them to prove they're your grandchild by answering a personal question",
+              "Hang up and call your grandchild directly on their known phone number",
+              "Give them your credit card number over the phone",
+            ]}
+            correctIndex={2}
+            explanation="Always verify independently. Hang up and call your grandchild (or their parents) on a number you already have. Scammers can be very convincing, but they can't answer your grandchild's real phone."
+          />
 
-        <ArticleQuiz
-          question="A pop-up on your computer says it's infected and gives you a phone number to call. What should you do?"
-          options={[
-            "Call the number immediately",
-            "Close the browser window and run your own antivirus software",
-            "Give them remote access to fix it",
-            "Enter your credit card to pay for the repair",
-          ]}
-          correctIndex={1}
-          explanation="These pop-ups are fake. Close the browser (you may need to force-quit it). Real security software doesn't display phone numbers in browser pop-ups. Run your own trusted antivirus program instead."
-        />
+          <InteractiveQuiz
+            questionId="scam-q2"
+            question="A pop-up on your computer says it's infected and gives you a phone number to call. What should you do?"
+            options={[
+              "Call the number immediately",
+              "Close the browser window and run your own antivirus software",
+              "Give them remote access to fix it",
+              "Enter your credit card to pay for the repair",
+            ]}
+            correctIndex={1}
+            explanation="These pop-ups are fake. Close the browser (you may need to force-quit it). Real security software doesn't display phone numbers in browser pop-ups. Run your own trusted antivirus program instead."
+          />
 
-        <ArticleQuiz
-          question="Which payment method is a major red flag if someone asks you to use it?"
-          options={[
-            "Credit card",
-            "Check",
-            "Gift cards",
-            "Bank transfer through your bank's app",
-          ]}
-          correctIndex={2}
-          explanation="Gift cards are a favorite payment method for scammers because they're nearly impossible to trace or reverse. No legitimate business, government agency, or family member in genuine trouble will ask you to pay with gift cards."
-        />
+          <InteractiveQuiz
+            questionId="scam-q3"
+            question="Which payment method is a major red flag if someone asks you to use it?"
+            options={[
+              "Credit card",
+              "Check",
+              "Gift cards",
+              "Bank transfer through your bank's app",
+            ]}
+            correctIndex={2}
+            explanation="Gift cards are a favorite payment method for scammers because they're nearly impossible to trace or reverse. No legitimate business, government agency, or family member in genuine trouble will ask you to pay with gift cards."
+          />
+
+          <QuizScoreboard />
+        </QuizProvider>
       </ArticleSection>
     </ArticleLayout>
   );

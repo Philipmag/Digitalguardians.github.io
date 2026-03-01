@@ -44,4 +44,11 @@
 - [x] Build AI tech help backend endpoint for step-by-step guides
 - [x] Update frontend with tab-based UI for both AI modes
 - [x] Write vitest tests for new AI tech help endpoint
-- [ ] Push changes to GitHub
+- [x] Push changes to GitHub
+- [x] Update logo to new transparent background version
+- [x] Rename "Check for Scams" to "AI Assistant" in navbar and throughout site
+- [x] Add interactive quiz scoring to Learning Center guide pages
+- [x] Build Contact Us form page with backend endpoint
+- [x] Add Contact Us to navigation
+- [x] Write vitest tests for Contact Us endpoint
+- [x] Push all changes to GitHub

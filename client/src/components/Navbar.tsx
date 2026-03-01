@@ -2,14 +2,15 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 
-const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/110291972/eUbA5NSXSrUDToa4RxQdTu/DigitalGuardianslogo_d3ab57ff.png";
+const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/110291972/eUbA5NSXSrUDToa4RxQdTu/DigitalGuardianslogo(2)_4ab11ef1.png";
 
 const navLinks = [
   { href: "/", label: "Home", isHash: false },
-  { href: "/#analyzer", label: "Check for Scams", isHash: true },
+  { href: "/#analyzer", label: "AI Assistant", isHash: true },
   { href: "/#learn", label: "Learn", isHash: true },
   { href: "/#about", label: "About", isHash: true },
   { href: "/resources", label: "Resources", isHash: false },
+  { href: "/contact", label: "Contact", isHash: false },
 ];
 
 export default function Navbar() {
@@ -94,7 +95,7 @@ export default function Navbar() {
             }}
             className="ml-3 px-5 py-2 text-sm font-semibold rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-all glow-green"
           >
-            Try Scam Analyzer
+            Try AI Assistant
           </a>
         </nav>
 
@@ -157,7 +158,7 @@ export default function Navbar() {
               }}
               className="mx-4 mt-2 px-5 py-3 text-sm font-semibold rounded-lg bg-primary text-primary-foreground text-center glow-green"
             >
-              Try Scam Analyzer
+              Try AI Assistant
             </a>
           </nav>
         </div>

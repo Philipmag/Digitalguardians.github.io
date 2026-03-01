@@ -9,8 +9,9 @@ import ArticleLayout, {
   ArticleTip,
   ArticleCard,
   ArticleStepList,
-  ArticleQuiz,
 } from "@/components/ArticleLayout";
+import { QuizProvider } from "@/contexts/QuizContext";
+import { InteractiveQuiz, QuizScoreboard } from "@/components/InteractiveQuiz";
 
 const tableOfContents = [
   { id: "why-passwords-matter", label: "Why Passwords Matter" },
@@ -173,44 +174,51 @@ export default function Passwords() {
 
       <ArticleSection id="quiz" title="Test Your Knowledge">
         <ArticleParagraph>
-          Let's check what you've learned about password security:
+          Let's check what you've learned about password security! Select your answer and click "Submit Answer" to see if you're right.
         </ArticleParagraph>
 
-        <ArticleQuiz
-          question="Which of these is the strongest password?"
-          options={[
-            "P@ssw0rd!",
-            "john1952",
-            "purple-elephant-dances-tuesday-42!",
-            "123456789",
-          ]}
-          correctIndex={2}
-          explanation="The passphrase 'purple-elephant-dances-tuesday-42!' is the strongest because it's long (35 characters), uses random words, includes numbers and symbols, and is hard to guess but easy to remember."
-        />
+        <QuizProvider totalExpected={3}>
+          <InteractiveQuiz
+            questionId="pw-q1"
+            question="Which of these is the strongest password?"
+            options={[
+              "P@ssw0rd!",
+              "john1952",
+              "purple-elephant-dances-tuesday-42!",
+              "123456789",
+            ]}
+            correctIndex={2}
+            explanation="The passphrase 'purple-elephant-dances-tuesday-42!' is the strongest because it's long (35 characters), uses random words, includes numbers and symbols, and is hard to guess but easy to remember."
+          />
 
-        <ArticleQuiz
-          question="What should you do if you hear a company you use has been hacked?"
-          options={[
-            "Nothing — they'll fix it",
-            "Delete your account immediately",
-            "Change your password for that service right away",
-            "Stop using the internet",
-          ]}
-          correctIndex={2}
-          explanation="When a data breach occurs, your password may have been exposed. Changing it immediately prevents anyone from using the stolen password to access your account."
-        />
+          <InteractiveQuiz
+            questionId="pw-q2"
+            question="What should you do if you hear a company you use has been hacked?"
+            options={[
+              "Nothing — they'll fix it",
+              "Delete your account immediately",
+              "Change your password for that service right away",
+              "Stop using the internet",
+            ]}
+            correctIndex={2}
+            explanation="When a data breach occurs, your password may have been exposed. Changing it immediately prevents anyone from using the stolen password to access your account."
+          />
 
-        <ArticleQuiz
-          question="Why should you enable two-factor authentication on your email first?"
-          options={[
-            "Email is the most fun to use",
-            "Email is used to reset passwords for other accounts",
-            "Email companies require it",
-            "It makes email faster",
-          ]}
-          correctIndex={1}
-          explanation="Your email is the gateway to your other accounts. If someone gains access to your email, they can reset passwords for your bank, social media, and shopping accounts. Protecting it with 2FA is critical."
-        />
+          <InteractiveQuiz
+            questionId="pw-q3"
+            question="Why should you enable two-factor authentication on your email first?"
+            options={[
+              "Email is the most fun to use",
+              "Email is used to reset passwords for other accounts",
+              "Email companies require it",
+              "It makes email faster",
+            ]}
+            correctIndex={1}
+            explanation="Your email is the gateway to your other accounts. If someone gains access to your email, they can reset passwords for your bank, social media, and shopping accounts. Protecting it with 2FA is critical."
+          />
+
+          <QuizScoreboard />
+        </QuizProvider>
       </ArticleSection>
     </ArticleLayout>
   );

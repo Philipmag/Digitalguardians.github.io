@@ -20,8 +20,9 @@ import ArticleLayout, {
   ArticleTip,
   ArticleCard,
   ArticleStepList,
-  ArticleQuiz,
 } from "@/components/ArticleLayout";
+import { QuizProvider } from "@/contexts/QuizContext";
+import { InteractiveQuiz, QuizScoreboard } from "@/components/InteractiveQuiz";
 
 const tableOfContents = [
   { id: "browsing-basics", label: "Browsing Basics" },
@@ -185,44 +186,51 @@ export default function SafeBrowsing() {
 
       <ArticleSection id="quiz" title="Test Your Knowledge">
         <ArticleParagraph>
-          Let's check how well you can navigate the internet safely:
+          Let's check how well you can navigate the internet safely! Select your answer and click "Submit Answer" to check.
         </ArticleParagraph>
 
-        <ArticleQuiz
-          question="You're about to enter your credit card number on a website. What should you check first?"
-          options={[
-            "That the website has colorful graphics",
-            "That the URL starts with 'https://' and shows a padlock icon",
-            "That the website has a search bar",
-            "That the website loads quickly",
-          ]}
-          correctIndex={1}
-          explanation="The 'https://' and padlock icon indicate that the connection is encrypted, meaning your credit card information will be transmitted securely. Never enter payment information on a site without these indicators."
-        />
+        <QuizProvider totalExpected={3}>
+          <InteractiveQuiz
+            questionId="browse-q1"
+            question="You're about to enter your credit card number on a website. What should you check first?"
+            options={[
+              "That the website has colorful graphics",
+              "That the URL starts with 'https://' and shows a padlock icon",
+              "That the website has a search bar",
+              "That the website loads quickly",
+            ]}
+            correctIndex={1}
+            explanation="The 'https://' and padlock icon indicate that the connection is encrypted, meaning your credit card information will be transmitted securely. Never enter payment information on a site without these indicators."
+          />
 
-        <ArticleQuiz
-          question="You're at a coffee shop and need to check your bank balance. What's the safest approach?"
-          options={[
-            "Connect to the coffee shop's Wi-Fi and log in",
-            "Ask the barista for the Wi-Fi password first, then log in",
-            "Wait until you're home on your secure network, or use your phone's cellular data",
-            "Use any available open Wi-Fi network",
-          ]}
-          correctIndex={2}
-          explanation="Public Wi-Fi networks are not secure for sensitive activities like banking. Use your home network or cellular data instead. If you must use public Wi-Fi, use a VPN to encrypt your connection."
-        />
+          <InteractiveQuiz
+            questionId="browse-q2"
+            question="You're at a coffee shop and need to check your bank balance. What's the safest approach?"
+            options={[
+              "Connect to the coffee shop's Wi-Fi and log in",
+              "Ask the barista for the Wi-Fi password first, then log in",
+              "Wait until you're home on your secure network, or use your phone's cellular data",
+              "Use any available open Wi-Fi network",
+            ]}
+            correctIndex={2}
+            explanation="Public Wi-Fi networks are not secure for sensitive activities like banking. Use your home network or cellular data instead. If you must use public Wi-Fi, use a VPN to encrypt your connection."
+          />
 
-        <ArticleQuiz
-          question="A pop-up appears saying you need to download a 'critical security update' from an unfamiliar website. What should you do?"
-          options={[
-            "Download it immediately — security is important",
-            "Close the pop-up and update your software through official channels instead",
-            "Click the link to learn more about the update",
-            "Share the link with friends so they can update too",
-          ]}
-          correctIndex={1}
-          explanation="Legitimate software updates come through your device's built-in update system or the official app store — never through pop-up ads or unfamiliar websites. These pop-ups are a common way to trick people into installing malware."
-        />
+          <InteractiveQuiz
+            questionId="browse-q3"
+            question="A pop-up appears saying you need to download a 'critical security update' from an unfamiliar website. What should you do?"
+            options={[
+              "Download it immediately — security is important",
+              "Close the pop-up and update your software through official channels instead",
+              "Click the link to learn more about the update",
+              "Share the link with friends so they can update too",
+            ]}
+            correctIndex={1}
+            explanation="Legitimate software updates come through your device's built-in update system or the official app store — never through pop-up ads or unfamiliar websites. These pop-ups are a common way to trick people into installing malware."
+          />
+
+          <QuizScoreboard />
+        </QuizProvider>
       </ArticleSection>
     </ArticleLayout>
   );

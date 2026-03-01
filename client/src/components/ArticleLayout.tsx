@@ -157,13 +157,13 @@ export default function ArticleLayout({
                         Need Help?
                       </h3>
                       <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
-                        Use our AI Scam Analyzer to check any suspicious message instantly.
+                        Use our AI Assistant to check suspicious messages or get tech help.
                       </p>
                       <Link
                         href="/#analyzer"
                         className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
                       >
-                        Try Scam Analyzer
+                        Try AI Assistant
                         <ChevronRight className="w-3.5 h-3.5" />
                       </Link>
                     </div>
