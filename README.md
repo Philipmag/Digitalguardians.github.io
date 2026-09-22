@@ -1,5 +1,7 @@
 # 🛡️ Digital Guardians — TypeScript Redesign
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 > A modern, accessible TypeScript/React redesign of the Digital Guardians cybersecurity education platform for seniors.
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
